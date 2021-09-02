@@ -11,7 +11,7 @@ class CatIndex extends Component {
   render() {
     return (
       <div>
-        <CatList cats={this.breeds} />
+        <CatList cats={this.state.breeds} />
       </div>
     )
   }
