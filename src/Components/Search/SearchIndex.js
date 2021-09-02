@@ -6,24 +6,23 @@ class SearchIndex extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards']
-      }
-      searchFunction() {
-        this.setState({
-          // the input from the form
-        })
-        let searchResults;
-        console.log(this.things[1]);
-        return searchResults.push(this.things[1]); //dummy while working out the search function
+        things: ['pen', 'marker', 'eraser', 'notebook', 'pencil', 'scissors', 'highlighter', 'stapler', 'paper clip', 'binder', 'hole punch', 'laminator', 'laminating sheets', 'protective sheets', 'index cards'],
+        searchTerm: this.props.searchTerm
       };
     }
 
-  
+    searchFunction() {
+
+      const searchResults = [];
+      searchResults.push(this.state.things[1])
+      console.log(this.state.things[1]);
+      return searchResults; //dummy while working out the search function
+    };
 
   render() {
     return (
       <div>
-        <Input placeholder='Search Here' />
+        <Input placeholder='Search Here' value={this.state.searchTerm}/>
         <h3>Results: {this.searchFunction()}</h3>
       </div>
     );
