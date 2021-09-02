@@ -12,18 +12,25 @@ class SearchIndex extends React.Component {
     }
 
     searchFunction() {
-
-      const searchResults = [];
-      searchResults.push(this.state.things[1])
-      console.log(this.state.things[1]);
+      const searchResults = this.state.things.filter(thing => thing.includes(this.state.searchTerm))
+      console.log("");
       return searchResults; //dummy while working out the search function
     };
 
+    handleSearch(e) {
+      this.setState({
+        searchTerm: e.target.value
+      })
+    }
+// onBlur  in the render so that when clicking out of the search box, you'll get a result - of everything if needed
   render() {
     return (
       <div>
-        <Input placeholder='Search Here' value={this.state.searchTerm}/>
-        <h3>Results: {this.searchFunction()}</h3>
+        <Input placeholder='Search Here' value={this.state.searchTerm} onChange={this.handleSearch.bind(this)} onBlur={this.handleSearch.bind(this)} />
+        <h3>Results:</h3>
+        <p> {this.searchFunction(this.state.searchTerm).map(thing => (
+          <li>{thing}</li>
+        ))}</p>
       </div>
     );
   }
